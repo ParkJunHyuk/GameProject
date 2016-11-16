@@ -8,12 +8,12 @@ public class createStair : MonoBehaviour {
     public GameObject[] leftStairArray;
     public Transform temp;
 
-    public static int STAIR_NUM = 20;
+    public static int STAIR_NUM = 60;
     public float waitingTime;
     public bool live = true;
 
     const float STAIR_HIGHT = 0.006f;
-    const float STAIR_WIDTH = 0.01f;
+    const float STAIR_WIDTH = 0.0085f;
     const float LEFT_STAIR_START_Z = 0.034f;
 
     // Use this for initialization
