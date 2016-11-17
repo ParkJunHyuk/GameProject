@@ -1,16 +1,27 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class loading : MonoBehaviour {
 
     public Text loadingText;
+    public InputField name;
+    public Canvas setNameCanvas;
     
     // Use this for initialization
-    void Start () {
+    void Start () {        
         StartCoroutine(Progress());
-        StartCoroutine(ChangeScene());
+        PlayerPrefs.DeleteAll();
+        if (PlayerPrefs.HasKey("name"))
+        {
+            setNameCanvas.GetComponent<Canvas>().enabled = false;
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            // nothing
+        }
     }
 	
 	// Update is called once per frame
@@ -28,9 +39,9 @@ public class loading : MonoBehaviour {
        
     }
 
-    IEnumerator ChangeScene()
+    public void SetName()
     {
-        yield return new WaitForSeconds(4);
+        PlayerPrefs.SetString("name", name.ToString());
         SceneManager.LoadScene(1);
     }
 }
