@@ -41,7 +41,7 @@ public class loading : MonoBehaviour {
 
     public void SetName()
     {
-        PlayerPrefs.SetString("name", name.ToString());
+        PlayerPrefs.SetString("name", name.text);
         SceneManager.LoadScene(1);
     }
 }
