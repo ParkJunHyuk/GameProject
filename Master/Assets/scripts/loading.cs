@@ -11,17 +11,7 @@ public class loading : MonoBehaviour {
     
     // Use this for initialization
     void Start () {        
-        StartCoroutine(Progress());
-        PlayerPrefs.DeleteAll();
-        if (PlayerPrefs.HasKey("name"))
-        {
-            setNameCanvas.GetComponent<Canvas>().enabled = false;
-            SceneManager.LoadScene(1);
-        }
-        else
-        {
-            // nothing
-        }
+        StartCoroutine(LoadDataAndSet());        
     }
 	
 	// Update is called once per frame
@@ -29,18 +19,29 @@ public class loading : MonoBehaviour {
 	
 	}
 
-    IEnumerator Progress()
+    IEnumerator LoadDataAndSet()
     {
-        while(true)
+        if (PlayerPrefs.HasKey("name"))
         {
-            loadingText.GetComponent<Text>().text = loadingText.GetComponent<Text>().text+".";
-            yield return new WaitForSeconds(1);
+            setNameCanvas.GetComponent<Canvas>().enabled = false;
+            Global.userName = PlayerPrefs.GetString("name");
+            Global.money = PlayerPrefs.GetInt("money");
+            Global.energy = PlayerPrefs.GetInt("energy");
+            Global.ruby = PlayerPrefs.GetInt("ruby");
+            SceneManager.LoadScene(1);
         }
-       
+        else
+        {
+            Global.energy = 5;
+            Global.money = 0;
+            Global.ruby = 0;
+        }
+        yield return new WaitForSeconds(1);
     }
 
     public void SetName()
     {
+        Global.userName = name.text;
         PlayerPrefs.SetString("name", name.text);
         SceneManager.LoadScene(1);
     }
