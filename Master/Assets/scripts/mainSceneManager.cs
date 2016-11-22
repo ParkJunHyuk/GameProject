@@ -13,7 +13,9 @@ public class mainSceneManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        StartCoroutine(UserDataSave());
+        
+        StartCoroutine(UserDataSave());    
+
         nameText.GetComponent<Text>().text = Global.userName;
         energyText.GetComponent<Text>().text = Global.energy.ToString();
         moneyText.GetComponent<Text>().text = Global.money.ToString();
@@ -62,6 +64,7 @@ public class mainSceneManager : MonoBehaviour {
         while(true)
         {
             yield return new WaitForSeconds(1);
+            PlayerPrefs.SetInt("id", Global.userId);
             PlayerPrefs.SetInt("energy", Global.energy);
             PlayerPrefs.SetInt("money", Global.money);
             PlayerPrefs.SetInt("ruby", Global.ruby);

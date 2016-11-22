@@ -7,5 +7,6 @@ public static class Global {
     public static int energy;
     public static int money;
     public static int ruby;
+    public static int userId;
     
 }
