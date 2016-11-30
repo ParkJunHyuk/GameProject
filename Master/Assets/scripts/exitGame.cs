@@ -12,7 +12,7 @@ public class exitGame : MonoBehaviour {
 
     Data data;
 
-    string url = "http://game-server-parkjunhyuk.c9users.io:8080/";
+    string url = "http://52.79.59.114:3000/";
     public static Client Socket {
         get; private set;
     }
