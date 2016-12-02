@@ -15,19 +15,14 @@ public class mainSceneManager : MonoBehaviour {
     void Start () {
         
         StartCoroutine(UserDataSave());    
-
-        nameText.GetComponent<Text>().text = Global.userName;
         energyText.GetComponent<Text>().text = Global.energy.ToString();
         moneyText.GetComponent<Text>().text = Global.money.ToString();
-        rubyText.GetComponent<Text>().text = Global.ruby.ToString();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        nameText.GetComponent<Text>().text = Global.userName;
         energyText.GetComponent<Text>().text = Global.energy.ToString();
-        moneyText.GetComponent<Text>().text = Global.money.ToString();
-        rubyText.GetComponent<Text>().text = Global.ruby.ToString();        
+        moneyText.GetComponent<Text>().text = Global.money.ToString();    
     }
 
     public void StartGame()

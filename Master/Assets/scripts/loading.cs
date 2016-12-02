@@ -11,7 +11,7 @@ public class loading : MonoBehaviour {
     public InputField name;
     public Canvas setNameCanvas;
 
-    string url = "http://52.79.59.114:3000/";
+    string url = "http://www.lnpj.nl:3000/";
     public static Client Socket {
         get; private set;
     }
