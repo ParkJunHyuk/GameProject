@@ -22,7 +22,20 @@ public class mainSceneManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         energyText.GetComponent<Text>().text = Global.energy.ToString();
-        moneyText.GetComponent<Text>().text = Global.money.ToString();    
+        moneyText.GetComponent<Text>().text = Global.money.ToString();
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.allCameras[0].ScreenPointToRay(Input.mousePosition);
+            
+
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                Debug.Log(hit.transform.gameObject.name);
+                Global.playCharacter = hit.transform.gameObject.name;
+            }
+        }
     }
 
     public void StartGame()

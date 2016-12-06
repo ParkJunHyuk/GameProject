@@ -8,5 +8,6 @@ public static class Global {
     public static int money;
     public static int ruby;
     public static int userId;
+    public static string playCharacter;
     
 }

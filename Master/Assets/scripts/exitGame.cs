@@ -5,7 +5,7 @@ using System.Collections;
 
 class Data {
     public float score;
-    public int id;
+    public int id = 0;
 }
 
 public class exitGame : MonoBehaviour {
@@ -20,17 +20,17 @@ public class exitGame : MonoBehaviour {
     public float score = .0f;
 
     private void Awake() {
+        
+    }
+
+    // Use this for initialization
+    void Start() {
         Socket = new Client(url);
-        Socket.Connect();
 
         Socket.On("saved", (data) => {
             Debug.Log("[RECIVE SUCCESS] saved score Data : " + data.Json.args[0]);
             SocketClose();
         });
-    }
-
-    // Use this for initialization
-    void Start() {
         setJson();
     }
 
@@ -52,6 +52,8 @@ public class exitGame : MonoBehaviour {
 
     public void BackButtonClick()
     {
+        Socket.Connect();
+
         data.score = score;
         Debug.Log("[DEBUG] send score data : "+data.score);
         Debug.Log("[DEBUG] send id data : " + data.id);
